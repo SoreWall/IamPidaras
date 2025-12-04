@@ -26,26 +26,82 @@ namespace coursework01.Pages
         {
             InitializeComponent();
 
-            Car car = App.DB.Cars.FirstOrDefault(x=>x.Id == 33);
-            SetCarBlock(car);
+            List<Car> car = App.DB.Cars.Select(x=>x).ToList();
+            DisplayCars(car);
         }
 
-        private void SetCarBlock(Car car)
+        private void DisplayCars(List<Car> cars)
         {
+            int i = 0;
+            StackPanel stackPanel = new();
+            stackPanel.Orientation = Orientation.Horizontal;
+
+            foreach (var car in cars)
+            {
+                if (i == 4)
+                {
+                    mainStackPanel.Children.Add(stackPanel);
+                    stackPanel = new();
+                    stackPanel.Orientation = Orientation.Horizontal;
+                    i = 0;
+                }
+
+                stackPanel.Children.Add(SetCarBlock(car));
+                i++;
+            }
+
+            if (stackPanel.Children.Count > 0)
+            {
+                mainStackPanel.Children.Add(stackPanel);
+            }
+        }
+
+        private Grid SetCarBlock(Car car)
+        {
+            Grid grid = new();
+            grid.Background = new SolidColorBrush(Colors.Red);
+            grid.Width = 199;
+            grid.Height = 202;
+            grid.Margin = new Thickness(10, 10, 0, 0);
+            grid.MouseLeftButtonDown += (s, e) => OpenCarInfoPage(car);
+
             StackPanel stackPanel = new();
 
             System.Windows.Controls.Image image = new();
             image.Width = 172;
-            image.Height = 195;
+            image.Height = 129;
             image.Source = new BitmapImage(new Uri($"/cars/{car.Image}", UriKind.Relative));
+            image.Stretch = Stretch.UniformToFill;
+            image.Margin = new Thickness(13, 10, 0, 0);
             image.HorizontalAlignment = HorizontalAlignment.Left;
+
+            TextBlock nameTextBlock = new();
+            nameTextBlock.Text = $"{car.Manufacturer.Trim()} {car.Model.Trim()}";
+            nameTextBlock.FontSize = 15;
+            nameTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+
+            TextBlock yearTextBlock = new();
+            yearTextBlock.Text = car.Year.ToString();
+            yearTextBlock.FontSize = 15;
+            yearTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+
+            TextBlock priceTextBlock = new();
+            priceTextBlock.Text = car.Price.ToString() + " ₽";
+            priceTextBlock.FontSize = 15;
+            priceTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+
             stackPanel.Children.Add(image);
-
-            TextBlock textBlock = new();
-            textBlock.Text = $"{car.Manufacturer.Trim()} {car.Model.Trim()}";
-            stackPanel.Children.Add(textBlock);
-
+            stackPanel.Children.Add(nameTextBlock);
+            stackPanel.Children.Add(yearTextBlock);
+            stackPanel.Children.Add(priceTextBlock);
             grid.Children.Add(stackPanel);
+
+            return grid;
+        }
+
+        private void OpenCarInfoPage(Car car)
+        {
+            MessageBox.Show($"This is {car.Manufacturer.Trim()} {car.Model.Trim()}");
         }
     }
 }

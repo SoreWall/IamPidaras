@@ -9,15 +9,207 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="cars\3series.jpg" />
     <None Remove="cars\500.jpg" />
+    <None Remove="cars\5series.jpg" />
+    <None Remove="cars\7series.jpg" />
+    <None Remove="cars\accord.jpg" />
+    <None Remove="cars\arkana.jpg" />
+    <None Remove="cars\c-class.jpg" />
     <None Remove="cars\camry.jpg" />
+    <None Remove="cars\captur.jpg" />
+    <None Remove="cars\carnival.jpg" />
+    <None Remove="cars\ceed.jpg" />
+    <None Remove="cars\civic.jpg" />
+    <None Remove="cars\corolla.jpg" />
+    <None Remove="cars\cr-v.jpg" />
+    <None Remove="cars\creta.jpg" />
+    <None Remove="cars\doblo.jpg" />
+    <None Remove="cars\duster.jpg" />
+    <None Remove="cars\e-class.jpg" />
+    <None Remove="cars\elantra.jpg" />
+    <None Remove="cars\Explorer.png" />
+    <None Remove="cars\f150.jpg" />
+    <None Remove="cars\focus.jpg" />
+    <None Remove="cars\fullback.jpg" />
+    <None Remove="cars\glc.jpg" />
+    <None Remove="cars\gle.jpg" />
+    <None Remove="cars\hilux.jpg" />
+    <None Remove="cars\hr-v.jpg" />
+    <None Remove="cars\kugo.jpg" />
+    <None Remove="cars\landcruser.jpg" />
+    <None Remove="cars\logan.jpg" />
+    <None Remove="cars\mondeo.jpg" />
+    <None Remove="cars\padna.jpg" />
+    <None Remove="cars\pilot.jpg" />
+    <None Remove="cars\rav4.jpg" />
+    <None Remove="cars\rio.jpg" />
+    <None Remove="cars\s-class.jpg" />
+    <None Remove="cars\s90.jpg" />
+    <None Remove="cars\sandero.jpg" />
+    <None Remove="cars\santafe.jpg" />
+    <None Remove="cars\solaris.png" />
+    <None Remove="cars\sorento.jpeg" />
+    <None Remove="cars\sportage.jpg" />
+    <None Remove="cars\tipo.jpg" />
+    <None Remove="cars\tucson.jpg" />
+    <None Remove="cars\v90.jpg" />
+    <None Remove="cars\x3.jpg" />
+    <None Remove="cars\x5.jpg" />
+    <None Remove="cars\xc40.jpg" />
+    <None Remove="cars\xc60.jpg" />
+    <None Remove="cars\xc90.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="cars\3series.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="cars\500.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="cars\5series.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\7series.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\accord.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\arkana.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\c-class.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="cars\camry.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\captur.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\carnival.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\ceed.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\civic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\corolla.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\cr-v.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\creta.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\doblo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\duster.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\e-class.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\elantra.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\Explorer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\f150.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\focus.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\fullback.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\glc.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\gle.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\hilux.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\hr-v.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\kugo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\landcruser.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\logan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\mondeo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\padna.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\pilot.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\rav4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\rio.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\s-class.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\s90.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\sandero.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\santafe.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\solaris.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\sorento.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\sportage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\tipo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\tucson.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\v90.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\x3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\x5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\xc40.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\xc60.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cars\xc90.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
