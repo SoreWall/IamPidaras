@@ -1,0 +1,27 @@
+﻿<Page x:Class="coursework01.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:coursework01.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid Background="AliceBlue">
+        <StackPanel Name="RegisterStackPanel">
+            <StackPanel Orientation="Horizontal" Margin="9 120 0 0" HorizontalAlignment="Center">
+                <TextBlock Text="Логин" Style="{StaticResource RegisterTextBlock}"></TextBlock>
+                <TextBox Name="LoginTB" Style="{StaticResource RegisterTextBox}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 30 0 0" HorizontalAlignment="Center">
+                <TextBlock Text="Пароль" Style="{StaticResource RegisterTextBlock}"></TextBlock>
+                <PasswordBox Name="PasswordPB" Style="{StaticResource RegisterPasswordBox}"></PasswordBox>
+            </StackPanel>
+
+            <Button Name="LogInButton" Content="Войти" Style="{StaticResource RegisterButton}" Margin="0 20 0 20" Click="LogInButton_Click"/>
+            <Button Name="CreationButton" Content="Нет аккаунта?" Style="{StaticResource RegisterButton}" Click="CreationButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
