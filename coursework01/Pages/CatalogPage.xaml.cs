@@ -22,16 +22,56 @@ namespace coursework01.Pages
     /// </summary>
     public partial class CatalogPage : Page
     {
+
         public CatalogPage()
         {
             InitializeComponent();
 
-            List<Car> car = App.DB.Cars.Select(x=>x).ToList();
-            DisplayCars(car);
+            SearchTBox.Text = App.SearchFilter;
+            MinCostTBox.Text = App.MinCostFilter.ToString();
+            MaxCostTBox.Text = App.MaxCostFilter.ToString();
+            if (App.MarkFilter != "Все")
+            {
+                foreach (var item in MarkCB.Items) 
+                {
+                    if (item.ToString().Contains(App.MarkFilter))
+                    {
+                        MarkCB.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+                FilterCars();
+        }
+
+        private void FilterCars()
+        {
+            List<Car> cars = App._cars;
+
+            cars = cars.Where(x => x.Model.Trim().ToLower().Contains(App.SearchFilter.ToLower())).ToList();
+
+            if (MarkCB.SelectedIndex != 0)
+            {
+                cars = cars.Where(x => x.Manufacturer.Trim() == App.MarkFilter).ToList();
+            }
+
+            if (App.MinCostFilter > 0 || App.MaxCostFilter > 0)
+            {
+                if (App.MaxCostFilter == 0)
+                {
+                    App.MaxCostFilter = App.DB.Cars.Max(x => x.Price);
+                }
+
+                cars = cars.Where(x => x.Price <= App.MaxCostFilter && x.Price >= App.MinCostFilter).ToList();
+            }
+
+            DisplayCars(cars);
         }
 
         private void DisplayCars(List<Car> cars)
         {
+            carsStackPanel.Children.Clear();
+
             int i = 0;
             StackPanel stackPanel = new();
             stackPanel.Orientation = Orientation.Horizontal;
@@ -40,7 +80,7 @@ namespace coursework01.Pages
             {
                 if (i == 4)
                 {
-                    mainStackPanel.Children.Add(stackPanel);
+                    carsStackPanel.Children.Add(stackPanel);
                     stackPanel = new();
                     stackPanel.Orientation = Orientation.Horizontal;
                     i = 0;
@@ -52,7 +92,7 @@ namespace coursework01.Pages
 
             if (stackPanel.Children.Count > 0)
             {
-                mainStackPanel.Children.Add(stackPanel);
+                carsStackPanel.Children.Add(stackPanel);
             }
         }
 
@@ -63,7 +103,7 @@ namespace coursework01.Pages
             grid.Width = 199;
             grid.Height = 202;
             grid.Margin = new Thickness(10, 10, 0, 0);
-            grid.MouseLeftButtonDown += (s, e) => OpenCarInfoPage(car);
+            grid.MouseLeftButtonDown += (s, e) => OpenCarPage(car);
 
             StackPanel stackPanel = new();
 
@@ -99,9 +139,74 @@ namespace coursework01.Pages
             return grid;
         }
 
-        private void OpenCarInfoPage(Car car)
+        private void OpenCarPage(Car car)
         {
-            MessageBox.Show($"This is {car.Manufacturer.Trim()} {car.Model.Trim()}");
+            App.CurrentCar = car;
+
+            NavigatePage("CarPage");
+        }
+
+        private void MinCostTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(MinCostTBox.Text))
+            {
+                if (App.MaxCostFilter == App.DB.Cars.Max(x=>x.Price))
+                {
+                    App.MaxCostFilter = 0;
+                }
+
+                App.MinCostFilter = 0;
+            }
+
+            else
+            {
+                App.MinCostFilter = Convert.ToInt32(MinCostTBox.Text);
+            }
+
+                FilterCars();
+        }
+
+        private void MaxCostTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(MaxCostTBox.Text))
+            {
+                App.MaxCostFilter = 0;
+            }
+
+            else
+            {
+                App.MaxCostFilter = Convert.ToInt32(MaxCostTBox.Text);
+            }
+
+            FilterCars();
+        }
+
+        private void MarkCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                App.MarkFilter = MarkCB.Text;
+                FilterCars();
+            }));
+
+            
+        }
+
+        private void SearchTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            App.SearchFilter = SearchTBox.Text;
+            FilterCars();
+        }
+
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatePage("ProfilePage");
+        }
+
+        private void NavigatePage(string page)
+        {
+            MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+            mainWindow.MainFrame.Navigate(new Uri($"Pages/{page}.xaml", UriKind.Relative));
         }
     }
 }

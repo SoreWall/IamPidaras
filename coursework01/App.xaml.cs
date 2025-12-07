@@ -11,7 +11,13 @@ namespace coursework01
     public partial class App : Application
     {
         public static CarSalesCenterContext DB { get; } = new();
-        public static Customer currentCustomer { get; set; }
+        public static Customer CurrentCustomer { get; set; }
+        public static Car CurrentCar { get; set; }
+        public static readonly List<Car> _cars = App.DB.Cars.Select(x => x).ToList();
+        public static string SearchFilter { get; set; } = "";
+        public static string MarkFilter { get; set; } = "";
+        public static int MinCostFilter { get; set; } = 0;
+        public static int MaxCostFilter { get; set; } = 0;
     }
 
 }

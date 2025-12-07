@@ -19,8 +19,6 @@ public partial class Customer
         Address = address;
     }
 
-    public Customer(){}
-
     public int Id { get; set; }
 
     public string Surname { get; set; } = null!;
@@ -38,6 +36,8 @@ public partial class Customer
     public string Email { get; set; } = null!;
 
     public string Address { get; set; } = null!;
+
+    public virtual ICollection<PurchaseRequisition> PurchaseRequisitions { get; set; } = new List<PurchaseRequisition>();
 
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 }

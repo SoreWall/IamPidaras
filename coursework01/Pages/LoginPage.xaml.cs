@@ -46,6 +46,13 @@ namespace coursework01.Pages
             else
             {
                 ClearInputs();
+
+                if (login == "admin" && password == "admin") 
+                {
+                    NavigatePage("AdminPage");
+                    return;
+                }
+
                 Customer customer = await DBAccess.DBAccess.GetUser(login, password);
 
                 if (customer == null)
@@ -54,7 +61,7 @@ namespace coursework01.Pages
                     return;
                 }
 
-                App.currentCustomer = customer;
+                App.CurrentCustomer = customer;
                 NavigatePage("ProfilePage");
             }
         }

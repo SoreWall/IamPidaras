@@ -25,6 +25,8 @@ public partial class CarSalesCenterContext : DbContext
 
     public virtual DbSet<Manufacturer> Manufacturers { get; set; }
 
+    public virtual DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
+
     public virtual DbSet<Sale> Sales { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -189,6 +191,27 @@ public partial class CarSalesCenterContext : DbContext
                 .HasMaxLength(20)
                 .IsFixedLength()
                 .HasColumnName("website");
+        });
+
+        modelBuilder.Entity<PurchaseRequisition>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("purchase_requisitions_pkey");
+
+            entity.ToTable("purchase_requisitions");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Car).HasColumnName("car");
+            entity.Property(e => e.Customer).HasColumnName("customer");
+
+            entity.HasOne(d => d.CarNavigation).WithMany(p => p.PurchaseRequisitions)
+                .HasForeignKey(d => d.Car)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("purchase_requisitions_car_fkey");
+
+            entity.HasOne(d => d.CustomerNavigation).WithMany(p => p.PurchaseRequisitions)
+                .HasForeignKey(d => d.Customer)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("purchase_requisitions_customer_fkey");
         });
 
         modelBuilder.Entity<Sale>(entity =>

@@ -25,7 +25,7 @@ public partial class Car
     {
         get
         {
-            return App.DB.CarModels.FirstOrDefault(x=>x.Id == this.CarModel).Name;
+            return App.DB.CarModels.FirstOrDefault(x => x.Id == this.CarModel).Name;
         }
     }
 
@@ -50,7 +50,7 @@ public partial class Car
         get
         {
             CarModel model = App.DB.CarModels.FirstOrDefault(x => x.Id == this.CarModel);
-            return App.DB.Manufacturers.FirstOrDefault(x=>x.Id==model.Manufacturer).Name;
+            return App.DB.Manufacturers.FirstOrDefault(x => x.Id == model.Manufacturer).Name;
         }
     }
 
@@ -82,6 +82,8 @@ public partial class Car
     }
 
     public virtual CarModel CarModelNavigation { get; set; } = null!;
+
+    public virtual ICollection<PurchaseRequisition> PurchaseRequisitions { get; set; } = new List<PurchaseRequisition>();
 
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 }

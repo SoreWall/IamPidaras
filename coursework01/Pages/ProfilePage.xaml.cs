@@ -25,7 +25,7 @@ namespace coursework01.Pages
         {
             InitializeComponent();
 
-            Customer customer = App.currentCustomer;
+            Customer customer = App.CurrentCustomer;
             TB.Text = $"Name: {customer.Surname} | First name: {customer.FirstName} || Middle name: {customer.MiddleName}";
         }
 
