@@ -26,7 +26,8 @@ namespace coursework01.Pages
             InitializeComponent();
 
             Customer customer = App.CurrentCustomer;
-            TB.Text = $"Name: {customer.Surname} | First name: {customer.FirstName} || Middle name: {customer.MiddleName}";
+            NameTB.Text = $"{customer.Surname.Trim()} {customer.FirstName.Trim()} {customer.MiddleName.Trim()}";
+            PhoneTB.Text = customer.PhoneNumber;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

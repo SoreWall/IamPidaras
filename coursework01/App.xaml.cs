@@ -18,6 +18,7 @@ namespace coursework01
         public static string MarkFilter { get; set; } = "";
         public static int MinCostFilter { get; set; } = 0;
         public static int MaxCostFilter { get; set; } = 0;
+        public static PurchaseRequisition currentPurchase { get; set; }
     }
 
 }

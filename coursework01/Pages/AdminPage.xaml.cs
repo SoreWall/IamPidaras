@@ -1,4 +1,5 @@
-﻿using System;
+﻿using coursework01.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,23 +39,54 @@ namespace coursework01.Pages
 
             if (selectedItem is Models.PurchaseRequisition request)
             {
-                MessageBox.Show(request.CarName);
+                App.currentPurchase = request;
             }
         }
 
         private void SetPurchaseBTN_Click(object sender, RoutedEventArgs e)
         {
+            if (App.currentPurchase == null)
+            {
+                MessageBox.Show("Нужно выбрать заявку");
+                return;
+            }
 
+            NavigatePage("PurchasePage");
         }
 
         private void RemoveBTN_Click(object sender, RoutedEventArgs e)
         {
+            PurchaseRequisition purchase = App.currentPurchase;
 
+            if (purchase == null)
+            {
+                MessageBox.Show("Нужно выбрать заявку");
+                return;
+            }
+
+            App.DB.PurchaseRequisitions.Remove(purchase);
+            App.DB.SaveChanges();
+            MainDG.ItemsSource = App.DB.PurchaseRequisitions.ToList();
         }
 
         private void ShowCustomers_Click(object sender, RoutedEventArgs e)
         {
             NavigatePage("CustomersPage");
+        }
+
+        private void BackBTB_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatePage("LoginPage");
+        }
+
+        private void SalesBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatePage("SalesPage");
+        }
+
+        private void EmployeesBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatePage("EmployeesPage");
         }
 
         private void NavigatePage(string page)

@@ -8,52 +8,68 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">
 
-    <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0 20 0 0">
-            <Button Name="BackButton" Content="Назад" Style="{StaticResource RegisterButton}" Click="BackButton_Click"/>
-        </StackPanel>
-        <StackPanel VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" Margin="71 0 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Фамилия" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="SurnameTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+    <Grid Background="#f8fafc">
+        <Button Name="BackButton" Content="Назад" Style="{StaticResource RegisterButton}" Click="BackButton_Click" HorizontalAlignment="Left"
+        VerticalAlignment="Top" Margin="30" Background="White" Foreground="#1e40af" BorderBrush="#93c5fd" BorderThickness="1"
+        Padding="12 10" Width="100" FontSize="14"/>
 
-            <StackPanel Orientation="Horizontal" Margin="114 15 0 15" HorizontalAlignment="Center">
-                <TextBlock Text="Имя" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="FirstNameTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background="White" Padding="40" BorderBrush="#e2e8f0"
+        BorderThickness="1" Width="450">
 
-            <StackPanel Orientation="Horizontal" Margin="69 0 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Отчество" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="MiddleNameTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Оформление продажи" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 30"/>
 
-            <StackPanel Orientation="Horizontal" Margin="0 15 0 15" HorizontalAlignment="Center">
-                <TextBlock Text="Номер телефона" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="PhoneNumberTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Фамилия" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="SurnameTB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC" BorderThickness="1"
+                     VerticalContentAlignment="Center" MaxLength="20"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="99 0 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Логин" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="LoginTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Имя" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="FirstNameTB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC" BorderThickness="1"
+                     VerticalContentAlignment="Center" MaxLength="20"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="86 15 0 15" HorizontalAlignment="Center">
-                <TextBlock Text="Пароль" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <PasswordBox Name="PasswordPB" Style="{StaticResource RegisterPasswordBox}"></PasswordBox>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Отчество" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="MiddleNameTB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC"
+                     BorderThickness="1" VerticalContentAlignment="Center" MaxLength="20"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="98 0 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Почта" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="EmailTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Номер телефона" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="PhoneNumberTB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC"
+                        BorderThickness="1" VerticalContentAlignment="Center" MaxLength="18"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="98 15 0 15" HorizontalAlignment="Center">
-                <TextBlock Text="Адрес" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="AddressTB" Style="{StaticResource RegisterTextBox}"></TextBox>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Логин" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="LoginTB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC"
+                        BorderThickness="1" VerticalContentAlignment="Center" MaxLength="20"/>
+                </StackPanel>
 
-            <Button Name="RegisterButton" Content="Зарегистрироваться" Style="{StaticResource RegisterButton}" Width="268" Margin="0 10 0 0" Click="RegisterButton_Click"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Пароль" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <PasswordBox Name="PasswordPB" Width="220" Height="35" Padding="10" FontSize="11" BorderBrush="#CCCCCC"
+                        BorderThickness="1" VerticalContentAlignment="Center" MaxLength="100"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Почта" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="EmailTB" Width="220" Height="35" Padding="10" FontSize="12" BorderBrush="#CCCCCC"
+                        BorderThickness="1" VerticalContentAlignment="Center" MaxLength="50"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                    <TextBlock Text="Адрес" Width="140" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBox Name="AddressTB" Width="220" Height="35" Padding="10" FontSize="12" BorderBrush="#CCCCCC"
+                        BorderThickness="1" VerticalContentAlignment="Center" MaxLength="100"/>
+                </StackPanel>
+
+                <Button Name="RegisterButton" Content="Зарегистрироваться" Style="{StaticResource RegisterButton}" Click="RegisterButton_Click"
+                    Background="#1e40af" Foreground="White" FontSize="16" FontWeight="SemiBold" Padding="20 12" Height="45" Margin="0 20 0 0"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

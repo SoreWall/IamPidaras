@@ -8,24 +8,55 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <Grid Background="AliceBlue">
+    <Grid Background="#f0f9ff">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="MainDG" AutoGenerateColumns="False" SelectionChanged="MainDG_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="Покупатель" Binding="{Binding CustomerName}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="Машина" Binding="{Binding CarName}" IsReadOnly="True"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Grid.Row="0" Margin="10">
+            
+            <Button Name="BackBTB" Content="Выйти" Style="{StaticResource RegisterButton}" HorizontalAlignment="Right" Background="#1e40af"
+                Foreground="White" Padding="10 8" Margin="0 0 0 10" Width="100" Click="BackBTB_Click"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Name="SetPurchaseBTN" Content="Оформить покупку" Style="{StaticResource RegisterButton}" Width="247" Click="SetPurchaseBTN_Click"/>
-            <Button Name="RemoveBTN" Content="Удалить заявку" Style="{StaticResource RegisterButton}" Margin="10 0 10 0" Click="RemoveBTN_Click"/>
-            <Button Name="ShowCustomers" Content="Вывести клиентов" Style="{StaticResource RegisterButton}" Width="241" Click="ShowCustomers_Click"/>
+            <Border BorderBrush="#93c5fd" BorderThickness="1" Background="White">
+                <DataGrid Name="MainDG" AutoGenerateColumns="False" SelectionChanged="MainDG_SelectionChanged" Background="White"
+                      HeadersVisibility="Column" FontSize="14">
+
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#1e40af"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Padding" Value="10 8"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True" Width="80"/>
+                        <DataGridTextColumn Header="Покупатель" Binding="{Binding CustomerName}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Машина" Binding="{Binding CarName}" IsReadOnly="True" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
         </StackPanel>
+
+        <Border Grid.Row="1" Background="White" BorderBrush="#93c5fd" BorderThickness="1 0 0 0" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="SetPurchaseBTN" Content="Оформить покупку" Style="{StaticResource AdminButton}" Background="#10b981"
+                    Foreground="White" Padding="15 8" Click="SetPurchaseBTN_Click" Width="165"/>
+
+                <Button Name="RemoveBTN" Content="Удалить заявку" Style="{StaticResource AdminButton}" Background="#ef4444" Foreground="White"
+                    Padding="15 8" Margin="10 0" Click="RemoveBTN_Click"/>
+
+                <Button Name="ShowCustomers" Content="Клиенты" Style="{StaticResource AdminButton}" Background="#1e40af" Foreground="White"
+                    Padding="15 8" Click="ShowCustomers_Click"/>
+
+                <Button Name="EmployeesBTN" Content="Сотрудники" Style="{StaticResource AdminButton}" Background="#8b5cf6"
+                    Foreground="White" Padding="15 8" Margin="10 0" Click="EmployeesBTN_Click"/>
+
+                <Button Name="SalesBTN" Content="Продажи" Style="{StaticResource AdminButton}" Background="#f59e0b" Foreground="White"
+                    Padding="15 8" Click="SalesBTN_Click"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

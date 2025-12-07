@@ -72,6 +72,15 @@ CREATE TABLE Sales
 	FOREIGN KEY (Employee) REFERENCES Employees (Id) ON DELETE NO ACTION
 );
 
+CREATE TABLE Purchase_requisitions
+(
+	Id SERIAL PRIMARY KEY NOT NULL,
+	Customer INT NOT NULL,
+	Car INT NOT NULL,
+	FOREIGN KEY (Customer) REFERENCES Customers (Id) ON DELETE NO ACTION,
+	FOREIGN KEY (Car) REFERENCES Cars (Id) ON DELETE NO ACTION
+);
+
 INSERT INTO Employees (Surname, First_name, Middle_name, Phone_number, Email, Address, Position, Salary) VALUES
 ('Жмышенко', 'Валерий', 'Альбертович', '+7 (926) 582-14-73', 'valeriy517@gmail.com', 'г. Москва, ул. Ленина, 15, кв. 24', 'Продавец', 50000),
 ('Паровозов', 'Аркадий', 'Сергеевич', '+7 (915) 739-26-48', 'arcadiy.parovozov123@mail.ru', 'г. Подольк, ул. Пушкина, 10, кв. 5', 'Менеджер', 75000),
@@ -291,10 +300,6 @@ SELECT * FROM Customers;
 SELECT * FROM Employees;
 SELECT * FROM Manufacturers;
 SELECT * FROM Sales;
+SELECT * FROM Purchase_requisitions
 
-DROP TABLE Car_models;
-DROP TABLE Cars;
-DROP TABLE Customers;
-DROP TABLE Employees;
-DROP TABLE Manufacturers;
-DROP TABLE Sales;
+TRUNCATE TABLE Purchase_requisitions RESTART IDENTITY

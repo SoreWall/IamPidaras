@@ -36,5 +36,11 @@
             <Setter Property="Width" Value="104"></Setter>
             <Setter Property="MaxLength" Value="9"></Setter>
         </Style>
+
+        <Style x:Key="AdminButton" TargetType="Button">
+            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

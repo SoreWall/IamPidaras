@@ -8,12 +8,93 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CarPage">
 
-    <Grid>
-        <StackPanel Background="AliceBlue">
-            <Image Name="CarImg" Height="193" Stretch="Uniform"></Image>
-            <TextBlock Name="CarNameTB" Style="{StaticResource RegisterTextBlock}" HorizontalAlignment="Center"></TextBlock>
-            <Button Name="BuyButton" Content="Оставить заявку" Style="{StaticResource RegisterButton}" Click="BuyButton_Click"/>
-            <Button Name="BackBtn" Content="Назад" Style="{StaticResource RegisterButton}" Click="BackBtn_Click"/>
-        </StackPanel>
+    <Grid Background="#f8fafc">
+        <ScrollViewer>
+            <StackPanel Margin="20">
+                <!-- Основная карточка -->
+                <Border Background="White"
+                    CornerRadius="12"
+                    Padding="30"
+                    BorderThickness="1"
+                    BorderBrush="#e2e8f0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Background="#f1f5f9" CornerRadius="8" Padding="20" Width="350" Height="350" Margin="0 0 40 0">
+                            <Image Name="CarImg" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1">
+
+                            <StackPanel Margin="0 0 0 25">
+                                <TextBlock Name="CarNameTB" FontSize="28" FontWeight="Bold" Foreground="#1e293b"/>
+
+                                <TextBlock Name="PriceTB" FontSize="24" FontWeight="SemiBold" Foreground="#1e40af" Margin="0 10 0 0"/>
+                            </StackPanel>
+
+                            <Grid Margin="0 0 0 25">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 0 20 15">
+                                    <TextBlock Text="Год выпуска:" FontSize="14" Foreground="#64748b"/>
+                                    <TextBlock Text="Тип кузова:" FontSize="14" Foreground="#64748b" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Двигатель:" FontSize="14" Foreground="#64748b" Margin="0 10 0 0"/>
+                                    <TextBlock Text="Страна:" FontSize="14" Foreground="#64748b" Margin="0 10 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="0" Grid.Column="1" Margin="0 0 0 15">
+                                    <TextBlock Name="YearTB" FontSize="14" FontWeight="Medium" Foreground="#1e293b"/>
+                                    <TextBlock Name="BodyTypeTB" FontSize="14" FontWeight="Medium" Foreground="#1e293b" Margin="0 10 0 0"/>
+                                    <TextBlock Name="EngineTypeTB" FontSize="14" FontWeight="Medium" Foreground="#1e293b" Margin="0 10 0 0"/>
+                                    <TextBlock Name="CountyTB" FontSize="14" FontWeight="Medium" Foreground="#1e293b" Margin="0 10 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 20 20 0">
+                                    <TextBlock Text="Телефон:" FontSize="14" Foreground="#64748b"/>
+                                    <TextBlock Text="Сайт:" FontSize="14" Foreground="#64748b" Margin="0 10 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0 20 0 0">
+                                    <TextBlock Name="PhoneTB" FontSize="14" FontWeight="Medium" Foreground="#1e293b"/>
+                                    <TextBlock Name="SiteTB" FontSize="14" FontWeight="Medium" Foreground="#1e40af" Margin="0 10 0 0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 30 0 0">
+                                <Button Name="BuyButton" Content="Оставить заявку" Style="{StaticResource RegisterButton}" Background="#1e40af"
+                                    Foreground="White" FontSize="16" FontWeight="SemiBold" Padding="20 12" Click="BuyButton_Click"/>
+
+                                <Button Name="BackBtn" Content="Назад" Style="{StaticResource RegisterButton}" Background="White"
+                                    Foreground="#1e293b" FontSize="16" BorderBrush="#cbd5e0" BorderThickness="1" Padding="20 12"
+                                    Margin="15 0 0 0" Click="BackBtn_Click"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                        
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

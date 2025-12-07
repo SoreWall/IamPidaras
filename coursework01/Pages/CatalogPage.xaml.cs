@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -41,7 +42,8 @@ namespace coursework01.Pages
                     }
                 }
             }
-                FilterCars();
+            //
+            FilterCars();
         }
 
         private void FilterCars()
@@ -99,42 +101,102 @@ namespace coursework01.Pages
         private Grid SetCarBlock(Car car)
         {
             Grid grid = new();
-            grid.Background = new SolidColorBrush(Colors.Red);
-            grid.Width = 199;
-            grid.Height = 202;
-            grid.Margin = new Thickness(10, 10, 0, 0);
+            grid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            grid.Width = 220;
+            grid.Height = 250;
+            grid.Margin = new Thickness(15, 15, 0, 0);
             grid.MouseLeftButtonDown += (s, e) => OpenCarPage(car);
 
-            StackPanel stackPanel = new();
+            grid.Cursor = Cursors.Hand;
+            grid.MouseEnter += (s, e) =>
+            {
+                grid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f8fafc"));
+                grid.Effect = new DropShadowEffect
+                {
+                    Color = Colors.LightGray,
+                    Direction = 270,
+                    ShadowDepth = 3,
+                    Opacity = 0.3,
+                    BlurRadius = 5
+                };
+            };
 
-            System.Windows.Controls.Image image = new();
-            image.Width = 172;
-            image.Height = 129;
+            grid.MouseLeave += (s, e) =>
+            {
+                grid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                grid.Effect = null;
+            };
+
+            Border border = new Border();
+            border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e2e8f0"));
+            border.BorderThickness = new Thickness(1);
+            border.CornerRadius = new CornerRadius(8);
+
+            StackPanel stackPanel = new StackPanel();
+            stackPanel.Margin = new Thickness(10);
+
+            Border imageContainer = new Border();
+            imageContainer.CornerRadius = new CornerRadius(6);
+            imageContainer.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f1f5f9"));
+            imageContainer.Width = 200;
+            imageContainer.Height = 140;
+            imageContainer.HorizontalAlignment = HorizontalAlignment.Center;
+            imageContainer.Margin = new Thickness(0, 0, 0, 10);
+
+            System.Windows.Controls.Image image = new System.Windows.Controls.Image();
+            image.Width = 190;
+            image.Height = 130;
             image.Source = new BitmapImage(new Uri($"/cars/{car.Image}", UriKind.Relative));
             image.Stretch = Stretch.UniformToFill;
-            image.Margin = new Thickness(13, 10, 0, 0);
-            image.HorizontalAlignment = HorizontalAlignment.Left;
+            image.HorizontalAlignment = HorizontalAlignment.Center;
+            image.VerticalAlignment = VerticalAlignment.Center;
 
-            TextBlock nameTextBlock = new();
+            imageContainer.Child = image;
+
+            TextBlock nameTextBlock = new TextBlock();
             nameTextBlock.Text = $"{car.Manufacturer.Trim()} {car.Model.Trim()}";
-            nameTextBlock.FontSize = 15;
+            nameTextBlock.FontSize = 16;
+            nameTextBlock.FontWeight = FontWeights.SemiBold;
+            nameTextBlock.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1e293b"));
             nameTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            nameTextBlock.TextAlignment = TextAlignment.Center;
+            nameTextBlock.Margin = new Thickness(0, 0, 0, 5);
+            nameTextBlock.TextTrimming = TextTrimming.CharacterEllipsis;
 
-            TextBlock yearTextBlock = new();
+            StackPanel yearPanel = new StackPanel();
+            yearPanel.Orientation = Orientation.Horizontal;
+            yearPanel.HorizontalAlignment = HorizontalAlignment.Center;
+            yearPanel.Margin = new Thickness(0, 0, 0, 5);
+
+            TextBlock yearLabel = new TextBlock();
+            yearLabel.Text = "Год: ";
+            yearLabel.FontSize = 13;
+            yearLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#64748b"));
+
+            TextBlock yearTextBlock = new TextBlock();
             yearTextBlock.Text = car.Year.ToString();
-            yearTextBlock.FontSize = 15;
-            yearTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            yearTextBlock.FontSize = 13;
+            yearTextBlock.FontWeight = FontWeights.Medium;
+            yearTextBlock.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1e293b"));
 
-            TextBlock priceTextBlock = new();
-            priceTextBlock.Text = car.Price.ToString() + " ₽";
-            priceTextBlock.FontSize = 15;
+            yearPanel.Children.Add(yearLabel);
+            yearPanel.Children.Add(yearTextBlock);
+
+            TextBlock priceTextBlock = new TextBlock();
+            priceTextBlock.Text = car.Price.ToString("N0") + " ₽";
+            priceTextBlock.FontSize = 18;
+            priceTextBlock.FontWeight = FontWeights.Bold;
+            priceTextBlock.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1e40af"));
             priceTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            priceTextBlock.Margin = new Thickness(0, 5, 0, 0);
 
-            stackPanel.Children.Add(image);
+            stackPanel.Children.Add(imageContainer);
             stackPanel.Children.Add(nameTextBlock);
-            stackPanel.Children.Add(yearTextBlock);
+            stackPanel.Children.Add(yearPanel);
             stackPanel.Children.Add(priceTextBlock);
-            grid.Children.Add(stackPanel);
+
+            border.Child = stackPanel;
+            grid.Children.Add(border);
 
             return grid;
         }
@@ -148,6 +210,16 @@ namespace coursework01.Pages
 
         private void MinCostTBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                Convert.ToInt32(MinCostTBox.Text); 
+            }
+
+            catch (Exception)
+            {
+                MinCostTBox.Text = "";
+            }
+
             if (string.IsNullOrEmpty(MinCostTBox.Text))
             {
                 if (App.MaxCostFilter == App.DB.Cars.Max(x=>x.Price))
@@ -168,6 +240,16 @@ namespace coursework01.Pages
 
         private void MaxCostTBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                Convert.ToInt32(MaxCostTBox.Text);
+            }
+
+            catch (Exception)
+            {
+                MaxCostTBox.Text = "";
+            }
+
             if (string.IsNullOrEmpty(MaxCostTBox.Text))
             {
                 App.MaxCostFilter = 0;

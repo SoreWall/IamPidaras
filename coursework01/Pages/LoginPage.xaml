@@ -8,20 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
 
-    <Grid Background="AliceBlue">
-        <StackPanel Name="RegisterStackPanel">
-            <StackPanel Orientation="Horizontal" Margin="9 120 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Логин" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <TextBox Name="LoginTB" Style="{StaticResource RegisterTextBox}"></TextBox>
+    <Grid Background="White">
+        <StackPanel Name="RegisterStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
+
+            <TextBlock Text="Вход" FontSize="24" FontWeight="Bold" Margin="0 0 0 35" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                <TextBlock Text="Логин" Width="80" VerticalAlignment="Center" Margin="0 0 15 0" FontSize="15"/>
+                <TextBox Name="LoginTB" Width="220" Height="35" Padding="10" FontSize="12" BorderBrush="#CCCCCC" BorderThickness="1" VerticalContentAlignment="Center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0 30 0 0" HorizontalAlignment="Center">
-                <TextBlock Text="Пароль" Style="{StaticResource RegisterTextBlock}"></TextBlock>
-                <PasswordBox Name="PasswordPB" Style="{StaticResource RegisterPasswordBox}"></PasswordBox>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                <TextBlock Text="Пароль" Width="80" VerticalAlignment="Center" Margin="0 0 15 0" FontSize="15"/>
+                <PasswordBox Name="PasswordPB" Width="220" Height="35" Padding="10" FontSize="12" BorderBrush="#CCCCCC" 
+                         BorderThickness="1" VerticalContentAlignment="Center"/>
             </StackPanel>
 
-            <Button Name="LogInButton" Content="Войти" Style="{StaticResource RegisterButton}" Margin="0 20 0 20" Click="LogInButton_Click"/>
-            <Button Name="CreationButton" Content="Нет аккаунта?" Style="{StaticResource RegisterButton}" Click="CreationButton_Click"/>
+            <Button Name="LogInButton" Content="Войти" Margin="0 0 0 15" Padding="15 10" Height="40" FontSize="16" Background="#0078D4" 
+                Foreground="White" BorderThickness="0" Click="LogInButton_Click"/>
+
+            <Button Name="CreationButton" Content="Нет аккаунта?" Background="Transparent" Foreground="#0078D4" FontSize="14"
+                BorderThickness="0" Padding="12 6" HorizontalAlignment="Center" Click="CreationButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

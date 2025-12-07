@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace coursework01.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для CustomersPage.xaml
+    /// Логика взаимодействия для SalesPage.xaml
     /// </summary>
-    public partial class CustomersPage : Page
+    public partial class SalesPage : Page
     {
-        public CustomersPage()
+        public SalesPage()
         {
             InitializeComponent();
 
-            MainDG.ItemsSource = App.DB.Customers.ToList();
+            MainDG.ItemsSource = App.DB.Sales.ToList();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

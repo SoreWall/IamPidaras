@@ -7,15 +7,22 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
-    <Grid Background="AliceBlue">
-        <StackPanel>
-            <Button Name="ExitButton" Content="Выйти из профиля" Style="{StaticResource RegisterButton}" 
-                    Click="ExitButton_Click" Width="243" HorizontalAlignment="Left"/>
-            <TextBlock Name="TB" FontSize="15"></TextBlock>
-        </StackPanel>
+    <Grid Background="White">
+        <StackPanel Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <StackPanel VerticalAlignment="Bottom">
-            <Button Name="CatalogButton" Content="Каталог авто" Style="{StaticResource RegisterButton}" Click="CatalogButton_Click"/>
+            <Button Name="ExitButton" Content="Выйти из профиля" Style="{StaticResource RegisterButton}" Click="ExitButton_Click" Background="#FF4444"
+                Foreground="White" Padding="10 8" Margin="0 0 0 20" Width="239"/>
+            
+            <Border BorderBrush="#DDDDDD" BorderThickness="1" Padding="15" Margin="0 0 0 20">
+                <StackPanel>
+                    <TextBlock Name="NameTB" Text="Жмышенко Валерий Альбертович" FontSize="15" Margin="0 0 0 10"/>
+
+                    <TextBlock Name="PhoneTB" Text="+7 (985) 228-66-37" FontSize="15"/>
+                </StackPanel>
+            </Border>
+
+            <Button Name="CatalogButton" Content="Каталог авто" Style="{StaticResource RegisterButton}" Click="CatalogButton_Click"
+                Background="#0078D4" Foreground="White" Padding="10 8"/>
         </StackPanel>
     </Grid>
 </Page>
