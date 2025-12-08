@@ -24,6 +24,8 @@ namespace coursework01.Pages
         public LoginPage()
         {
             InitializeComponent();
+            LoginTB.Text = "1";
+            PasswordPB.Password = "11111";
         }
 
         private async void LogInButton_Click(object sender, RoutedEventArgs e)
@@ -43,17 +45,16 @@ namespace coursework01.Pages
                 return;
             }
 
-            else
+
+            if (login == "admin" && password == "admin")
             {
-                ClearInputs();
+                NavigatePage("AdminPage");
+                return;
+            }
 
-                if (login == "admin" && password == "admin") 
-                {
-                    NavigatePage("AdminPage");
-                    return;
-                }
-
-                Customer customer = await DBAccess.DBAccess.GetUser(login, password);
+            try
+            {
+                var customer = await DBAccess.DBAccess.GetUser(login, password);
 
                 if (customer == null)
                 {
@@ -64,12 +65,10 @@ namespace coursework01.Pages
                 App.CurrentCustomer = customer;
                 NavigatePage("ProfilePage");
             }
-        }
-
-        private void ClearInputs()
-        {
-            LoginTB.Text = "";
-            PasswordPB.Password = "";
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CreationButton_Click(object sender, RoutedEventArgs e) => NavigatePage("RegisterPage");
