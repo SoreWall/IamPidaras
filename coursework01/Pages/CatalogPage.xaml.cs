@@ -42,7 +42,7 @@ namespace coursework01.Pages
                     }
                 }
             }
-            //
+            
             FilterCars();
         }
 

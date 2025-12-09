@@ -43,7 +43,8 @@ namespace coursework01.Pages
 
         private static string FormatPrice(int price)
         {
-            return price.ToString("N0").Replace(",", " ");
+            return price.ToString("N0", System.Globalization.CultureInfo.InvariantCulture)
+                            .Replace(",", " ");
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
